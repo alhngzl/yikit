@@ -1,0 +1,32 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "00001",
+        "author": "system",
+        "runOnChange": true,
+        "changes": [
+          {
+            "insert": {
+              "tableName": "t_user",
+              "columns": [
+                {
+                  "column": {
+                    "name": "username",
+                    "value": "alhngzl"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "password",
+                    "value": "jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI="
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

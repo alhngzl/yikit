@@ -1,0 +1,23 @@
+{
+  "description": "AHG: use 'creteSchema' on liquibase pro version",
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "1",
+        "author": "system",
+        "changes": [
+          {
+            "sql": {
+              "sql": "CREATE DATABASE db_yikit"
+            }
+          },
+          {
+            "sql": {
+              "sql": "CREATE SCHEMA IF NOT EXISTS sc_base"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

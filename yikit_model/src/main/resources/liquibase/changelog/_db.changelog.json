@@ -1,0 +1,16 @@
+{
+  "databaseChangeLog": [
+    {
+      "include": {
+        "file": "db.changelog.table_definition_t_user.json",
+        "relativeToChangelogFile": true
+      }
+    },
+    {
+      "include": {
+        "file": "db.changes.00001.table_admin_insert.json",
+        "relativeToChangelogFile": true
+      }
+    }
+  ]
+}
