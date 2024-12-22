@@ -19,12 +19,13 @@ import org.alhngzl.yikit.util.PasswordConverter;
 
 import java.util.Date;
 
+
+@Entity
+@Table(name = "t_user")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
-@Table(name = "t_user")
 public class User{
 
     @Id
@@ -43,6 +44,4 @@ public class User{
 
     @Column(name = "updated_date")
     private Date updatedDate;
-
-
 }

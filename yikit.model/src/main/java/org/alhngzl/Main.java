@@ -1,7 +1,6 @@
 package org.alhngzl;
 
 import org.alhngzl.yikit.entity.User;
-import org.alhngzl.yikit.util.PasswordConverter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
