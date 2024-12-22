@@ -1,6 +1,9 @@
 package org.alhngzl.yikit.controller;
 
-import org.alhngzl.yikit.dto.UserDTO;
+import org.alhngzl.yikit.dto.RequestCreateUserRest;
+import org.alhngzl.yikit.dto.RequestListUserRest;
+import org.alhngzl.yikit.dto.ResponseCreateUserRest;
+import org.alhngzl.yikit.dto.ResponseListUserRest;
 import org.alhngzl.yikit.entity.User;
 import org.alhngzl.yikit.request.RequestCreateUser;
 import org.alhngzl.yikit.request.RequestListUser;
@@ -28,34 +31,37 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/listUser")
-    public UserDTO getListUser(
-            @RequestBody UserDTO userDTO
+    @PostMapping("/listUser")
+    public ResponseListUserRest getListUser(
+            @RequestBody RequestListUserRest requestListUserRest
     ) {
         RequestListUser requestListUser = RequestListUser.builder()
                 .user(User.builder()
-                        .id(userDTO.getUserId())
-                        .username(userDTO.getUserUsername())
-                        .password(userDTO.getUserPassword())
+                        .id(requestListUserRest.getUserId())
+                        .username(requestListUserRest.getUserUsername())
                         .build())
                 .build();
         ResponseListUser responseListUser = userService.listUser(requestListUser);
-        userDTO.setUserList(responseListUser.getUserList());
-        return userDTO;
+
+        return ResponseListUserRest.builder()
+                .userList(responseListUser.getUserList())
+                .build();
     }
 
     @PutMapping("/createUser")
-    public UserDTO putCreateUser(
-            @RequestBody UserDTO userDTO
+    public ResponseCreateUserRest putCreateUser(
+            @RequestBody RequestCreateUserRest requestCreateUserRest
     ) {
         RequestCreateUser requestCreateUser = RequestCreateUser.builder()
                 .user(User.builder()
-                        .username(userDTO.getUserUsername())
-                        .password(userDTO.getUserPassword())
+                        .username(requestCreateUserRest.getUserUsername())
+                        .password(requestCreateUserRest.getUserPassword())
                         .build())
                 .build();
         ResponseCreateUser responseCreateUser = userService.createUser(requestCreateUser);
-        userDTO.setUser(responseCreateUser.getUser());
-        return userDTO;
+
+        return ResponseCreateUserRest.builder()
+                .user(responseCreateUser.getUser())
+                .build();
     }
 }

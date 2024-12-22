@@ -10,10 +10,6 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-public class UserDTO {
-    private Long userId;
-    private String userUsername;
-    private String userPassword;
+public class ResponseListUserRest {
     private List<User> userList;
-    private User user;
 }
