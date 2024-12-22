@@ -21,7 +21,7 @@ public class PasswordConverter implements AttributeConverter<String, String> {
     @Override
     public String convertToEntityAttribute(String attribute) {
         try {
-            return Base64.getEncoder().encodeToString(MessageDigest.getInstance("SHA-256").digest(attribute.getBytes()));
+            return ConstantsUtil.Char.EMPTY;
         }catch (Exception err){
             return attribute;
         }
