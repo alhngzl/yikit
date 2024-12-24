@@ -11,7 +11,6 @@ import org.alhngzl.yikit.response.ResponseCreateUser;
 import org.alhngzl.yikit.response.ResponseListUser;
 import org.alhngzl.yikit.service.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
