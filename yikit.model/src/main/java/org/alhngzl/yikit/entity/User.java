@@ -35,6 +35,9 @@ public class User{
     @Convert(converter = PasswordConverter.class)
     private String password;
 
+    @Column(name = "email", nullable = false, length = 128)
+    private String email;
+
     @Column(name = "created_date")
     private Date createdDate;
 

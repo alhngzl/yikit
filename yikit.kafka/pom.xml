@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>org.alhngzl</groupId>
-    <artifactId>model</artifactId>
+    <artifactId>kafka</artifactId>
     <version>1.0.0</version>
 
     <properties>

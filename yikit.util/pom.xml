@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>org.alhngzl</groupId>
-    <artifactId>model</artifactId>
+    <artifactId>util</artifactId>
     <version>1.0.0</version>
 
     <properties>
@@ -18,13 +18,5 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.alhngzl</groupId>
-            <artifactId>util</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-    </dependencies>
 
 </project>

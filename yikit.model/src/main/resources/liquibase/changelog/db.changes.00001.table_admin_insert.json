@@ -13,13 +13,19 @@
                 {
                   "column": {
                     "name": "username",
-                    "value": "alhngzl"
+                    "value": "admin"
                   }
                 },
                 {
                   "column": {
                     "name": "password",
                     "value": "jZae727K08KaOmKSgOaGzww/XVqGr/PKEgIMkjrcbJI="
+                  }
+                },
+                {
+                  "column": {
+                    "name": "email",
+                    "value": "alhn.gzl@gmail.com"
                   }
                 }
               ]

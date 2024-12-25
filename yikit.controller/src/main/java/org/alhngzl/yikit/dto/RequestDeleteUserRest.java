@@ -7,8 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class RequestCreateUserRest {
+public class RequestDeleteUserRest {
+    private Long userId;
     private String userUsername;
-    private String userPassword;
     private String userEmail;
 }

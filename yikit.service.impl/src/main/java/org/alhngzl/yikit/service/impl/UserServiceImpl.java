@@ -38,11 +38,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseDeleteUser deleteUser(RequestDeleteUser requestDeleteUser) {
-        if(Util.isNull(requestDeleteUser.getUser()))
-            userRepository.deleteAll();
-        else
-            userRepository.delete(requestDeleteUser.getUser());
-
+        List<User> userList = userRepository.listUser(requestDeleteUser.getUser());
+        userRepository.deleteAll(userList);
         return ResponseDeleteUser
                 .builder()
                 .user(requestDeleteUser.getUser())
