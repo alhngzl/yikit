@@ -10,7 +10,6 @@ import org.alhngzl.yikit.response.ResponseCreateUser;
 import org.alhngzl.yikit.response.ResponseDeleteUser;
 import org.alhngzl.yikit.response.ResponseListUser;
 import org.alhngzl.yikit.service.api.UserService;
-import org.alhngzl.yikit.util.Util;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

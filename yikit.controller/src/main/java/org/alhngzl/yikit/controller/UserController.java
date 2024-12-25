@@ -18,7 +18,6 @@ import org.alhngzl.yikit.service.KafkaProducerService;
 import org.alhngzl.yikit.service.api.UserService;
 import org.alhngzl.yikit.util.ConstantsUtil;
 import org.alhngzl.yikit.util.KafkaUtil;
-import org.alhngzl.yikit.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -75,10 +74,10 @@ public class UserController {
         ResponseCreateUser responseCreateUser = userService.createUser(requestCreateUser);
 
         KafkaEMailObject kafkaEMailObject = KafkaEMailObject.builder()
-                .mailTo(ConstantsUtil.EmailDefinition.CreateUser.mailTo)
-                .mailFrom(ConstantsUtil.EmailDefinition.CreateUser.mailFrom)
-                .mailSubject(ConstantsUtil.EmailDefinition.CreateUser.mailSubject)
-                .mailBody(ConstantsUtil.EmailDefinition.CreateUser.mailBody + responseCreateUser.toString())
+                .mailTo(ConstantsUtil.EmailDefinition.CreateUser.MAIL_TO)
+                .mailFrom(ConstantsUtil.EmailDefinition.CreateUser.MAIL_FROM)
+                .mailSubject(ConstantsUtil.EmailDefinition.CreateUser.MAIL_SUBJECT)
+                .mailBody(ConstantsUtil.EmailDefinition.CreateUser.MAIL_BODY + responseCreateUser.toString())
                 .build();
         kafkaProducerService.send(KafkaUtil.Topics.TOPIC_EMAIL, kafkaEMailObject);
 
@@ -101,10 +100,10 @@ public class UserController {
         ResponseDeleteUser responseDeleteUser = userService.deleteUser(requestDeleteUser);
 
         KafkaEMailObject kafkaEMailObject = KafkaEMailObject.builder()
-                .mailTo(ConstantsUtil.EmailDefinition.DeleteUser.mailTo)
-                .mailFrom(ConstantsUtil.EmailDefinition.DeleteUser.mailFrom)
-                .mailSubject(ConstantsUtil.EmailDefinition.DeleteUser.mailSubject)
-                .mailBody(ConstantsUtil.EmailDefinition.DeleteUser.mailBody + responseDeleteUser.toString())
+                .mailTo(ConstantsUtil.EmailDefinition.DeleteUser.MAIL_TO)
+                .mailFrom(ConstantsUtil.EmailDefinition.DeleteUser.MAIL_FROM)
+                .mailSubject(ConstantsUtil.EmailDefinition.DeleteUser.MAIL_SUBJECT)
+                .mailBody(ConstantsUtil.EmailDefinition.DeleteUser.MAIL_BODY + responseDeleteUser.toString())
                 .build();
         kafkaProducerService.send(KafkaUtil.Topics.TOPIC_EMAIL, kafkaEMailObject);
 

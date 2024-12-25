@@ -16,7 +16,7 @@ public class KafkaProducerService {
     }
 
     public void send(String topic, Object object){
-        String objectJson = Util.objectToJson(object).replace(ConstantsUtil.Char.ASCI_EQUALS, ConstantsUtil.Char.EQUALS);
+        String objectJson = Util.objectToJson(object).replace(ConstantsUtil.Char.ASCI_EQUALS, ConstantsUtil.Char.EQUAL);
         this.kafkaTemplate.send(topic, objectJson);
         LoggerUtil.printInfo(KafkaUtil.createSendLog(topic, objectJson));
     }

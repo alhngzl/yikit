@@ -1,7 +1,6 @@
 package org.alhngzl.yikit.util;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 public class Util {
     private Util() {throw new IllegalStateException(Util.class.getName());}
