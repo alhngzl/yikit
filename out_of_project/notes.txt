@@ -3,3 +3,21 @@ bin/zookeeper-server-start.sh config/zookeeper.properties
 bin/kafka-server-start.sh config/server.properties
 bin/kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
 
+-- Docker
+    --Postgres
+    docker run --name postgres-container -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=123456 -e POSTGRES_DB=db_yikit -p 5432:5432 -d postgres
+
+    --PgAdmin
+    docker run --name pgadmin-container -e PGADMIN_DEFAULT_EMAIL=admin@example.com -e PGADMIN_DEFAULT_PASSWORD=123456 -p 5050:80 -d dpage/pgadmin4
+
+    --SpringBoot
+    Docker File
+        FROM openjdk:17-jdk
+        WORKDIR /yikit-app
+        COPY --from=yikit /yikit.base/target/com.alhngzl.yikit.jar yikit-app
+        ENTRYPOINT ["java", "-jar", "yikit-app"]
+
+    --Yikit Spring Boot
+        cd ../yikit
+        docker build --build-context yikit=./ -t yikit -f ./docker/Dockerfile ./docker/image/
+        docker run -p 8080:8080 --name yikit-container yikit

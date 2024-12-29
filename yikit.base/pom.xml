@@ -16,6 +16,15 @@
 
     <build>
         <finalName>com.alhngzl.yikit</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>org.alhngzl.Main</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <properties>
