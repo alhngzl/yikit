@@ -10,6 +10,14 @@ bin/kafka-console-consumer.sh --topic topic-name --from-beginning --bootstrap-se
     --PgAdmin
     docker run --name pgadmin-container -e PGADMIN_DEFAULT_EMAIL=admin@example.com -e PGADMIN_DEFAULT_PASSWORD=123456 -p 5050:80 -d dpage/pgadmin4
 
+    --Kafka Zookeper
+    docker run -d --name zookeeper-container -p 2181:2181 zookeeper:latest
+    docker run -d --name kafka-container -p 9092:9092 --link zookeeper-container:zookeeper -e KAFKA_ADVERTISED_LISTENERS=INSIDE://localhost:9092,OUTSIDE://localhost:9093 -e KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT -e KAFKA_LISTENERS=INSIDE://localhost:9092,OUTSIDE://localhost:9093 -e KAFKA_LISTENER_PORT=9092 -e KAFKA_LISTENER_NAME_INSIDE=INSIDE -e KAFKA_LISTENER_NAME_OUTSIDE=OUTSIDE -e KAFKA_LISTENER_SECURITY_PROTOCOL=INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT -e KAFKA_LISTENER_INTERFACE=0.0.0.0 -e KAFKA_ZOOKEEPER_CONNECT=zookeeper-container:2181 -e KAFKA_INTER_BROKER_LISTENER_NAME=INSIDE kontena/kafka:3.3.0
+
+    --Kafka Kraft
+    docker run -d --name kafka-container  -e KAFKA_NODE_ID=1  -e KAFKA_PROCESS_ROLES=broker,controller  -e KAFKA_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093  -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092  -e KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER  -e KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT  -e KAFKA_CONTROLLER_QUORUM_VOTERS=1@localhost:9093  -e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1  -e KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1  -e KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1  -e KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS=0  -e KAFKA_NUM_PARTITIONS=3 apache/kafka:latest
+
+
     --SpringBoot
     Docker File
         FROM openjdk:17-jdk
@@ -17,7 +25,7 @@ bin/kafka-console-consumer.sh --topic topic-name --from-beginning --bootstrap-se
         COPY --from=yikit /yikit.base/target/com.alhngzl.yikit.jar yikit-app
         ENTRYPOINT ["java", "-jar", "yikit-app"]
 
-    --Yikit Spring Boot
+    Yikit Spring Boot
         cd ../yikit
         docker build --build-context yikit=./ -t yikit -f ./docker/Dockerfile ./docker/image/
         docker run -p 8080:8080 --name yikit-container yikit

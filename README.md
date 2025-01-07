@@ -24,3 +24,5 @@ Used on Project
 - Hibernate
 - Swagger
 - Rest API
+- SonarLint
+- Kafka
