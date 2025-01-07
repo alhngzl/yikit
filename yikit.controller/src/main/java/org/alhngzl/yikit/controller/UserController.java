@@ -30,15 +30,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/userController")
 public class UserController {
 
-    private final KafkaProducerService kafkaProducerService;
     private final UserService userService;
 
     @Autowired
     public UserController(
-            KafkaProducerService kafkaProducerService,
             UserService userService
     ) {
-        this.kafkaProducerService = kafkaProducerService;
         this.userService = userService;
     }
 
@@ -73,14 +70,6 @@ public class UserController {
                 .build();
         ResponseCreateUser responseCreateUser = userService.createUser(requestCreateUser);
 
-        KafkaEMailObject kafkaEMailObject = KafkaEMailObject.builder()
-                .mailTo(ConstantsUtil.EmailDefinition.CreateUser.MAIL_TO)
-                .mailFrom(ConstantsUtil.EmailDefinition.CreateUser.MAIL_FROM)
-                .mailSubject(ConstantsUtil.EmailDefinition.CreateUser.MAIL_SUBJECT)
-                .mailBody(ConstantsUtil.EmailDefinition.CreateUser.MAIL_BODY + responseCreateUser.toString())
-                .build();
-        kafkaProducerService.send(KafkaUtil.Topics.TOPIC_EMAIL, kafkaEMailObject);
-
         return ResponseCreateUserRest.builder()
                 .user(responseCreateUser.getUser())
                 .build();
@@ -98,14 +87,6 @@ public class UserController {
                         .build())
                 .build();
         ResponseDeleteUser responseDeleteUser = userService.deleteUser(requestDeleteUser);
-
-        KafkaEMailObject kafkaEMailObject = KafkaEMailObject.builder()
-                .mailTo(ConstantsUtil.EmailDefinition.DeleteUser.MAIL_TO)
-                .mailFrom(ConstantsUtil.EmailDefinition.DeleteUser.MAIL_FROM)
-                .mailSubject(ConstantsUtil.EmailDefinition.DeleteUser.MAIL_SUBJECT)
-                .mailBody(ConstantsUtil.EmailDefinition.DeleteUser.MAIL_BODY + responseDeleteUser.toString())
-                .build();
-        kafkaProducerService.send(KafkaUtil.Topics.TOPIC_EMAIL, kafkaEMailObject);
 
         return ResponseDeleteUserRest.builder()
                 .user(responseDeleteUser.getUser())

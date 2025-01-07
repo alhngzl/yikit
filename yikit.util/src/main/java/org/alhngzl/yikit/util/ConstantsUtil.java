@@ -21,6 +21,14 @@ public class ConstantsUtil {
             public static final String MAIL_BODY     = "YikiT new user created just now. User info : ";
         }
 
+        public static class ListUser{
+            private ListUser() {throw new IllegalStateException(ListUser.class.getName());}
+            public static final String MAIL_FROM     = "";
+            public static final String MAIL_TO       = "alhn.gzl@gmail.com";
+            public static final String MAIL_SUBJECT  = "User Listed";
+            public static final String MAIL_BODY     = "YikiT user listed just now. User info : ";
+        }
+
         public static class DeleteUser{
             private DeleteUser() {throw new IllegalStateException(DeleteUser.class.getName());}
             public static final String MAIL_FROM     = "";
