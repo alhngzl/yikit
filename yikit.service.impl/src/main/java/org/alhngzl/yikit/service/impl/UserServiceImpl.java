@@ -75,9 +75,9 @@ public class UserServiceImpl implements UserService {
         List<User> userList = userRepository.listUser(requestListUser.getUser());
 
         KafkaEMailObject kafkaEMailObject = KafkaEMailObject.builder()
-                .mailTo(ConstantsUtil.EmailDefinition.CreateUser.MAIL_TO)
-                .mailFrom(ConstantsUtil.EmailDefinition.CreateUser.MAIL_FROM)
-                .mailSubject(ConstantsUtil.EmailDefinition.CreateUser.MAIL_SUBJECT)
+                .mailTo(ConstantsUtil.EmailDefinition.ListUser.MAIL_TO)
+                .mailFrom(ConstantsUtil.EmailDefinition.ListUser.MAIL_FROM)
+                .mailSubject(ConstantsUtil.EmailDefinition.ListUser.MAIL_SUBJECT)
                 .mailBody(ConstantsUtil.EmailDefinition.ListUser.MAIL_BODY + userList.toString())
                 .build();
         kafkaProducerService.send(KafkaUtil.Topics.TOPIC_EMAIL, kafkaEMailObject);
