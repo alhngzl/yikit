@@ -8,7 +8,7 @@ Project Info
 - Database IDE : pgAdmin 4
 - Database Version Control : Liquibase 4.27.0
 - IDE : IntelliJ IDEA 2023.3.6 Ultimate Edition
-- Spring : 3.3.3
+- Spring : 3.3.6
 
 Used on Project
 ---------------
